@@ -1,36 +1,106 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# NexLearn – Frontend Machine Test (Next.js + TypeScript)
 
-## Getting Started
+---
 
-First, run the development server:
+## 🚀 Tech Stack
 
-```bash
+- **Next.js 14+ (App Router)**
+- **TypeScript**
+- **Tailwind CSS**
+- **Axios** (API calls + Interceptors)
+- **React Context API** (Authentication & global state)
+- **LocalStorage + SessionStorage** (persistent auth & exam result)
+- **Next/Image** (optimized assets)
+
+---
+
+## 📌 Features Implemented
+
+### 🔐 Authentication (with OTP)
+
+- Login screen for entering phone number  
+- OTP verification screen  
+- JWT-based login with **access token + refresh token stored in localStorage**  
+- Axios interceptor attaches token automatically  
+- Auto-redirect to `/login` if token is invalid or cleared  
+- Logout clears all tokens & redirects to login  
+
+### 🏠 Home Page (`/`)
+
+- Fetches exam metadata from API:
+  - Total questions  
+  - Total marks  
+  - Total time  
+  - Instructions (HTML rendered with `dangerouslySetInnerHTML`)
+- Pixel-perfect UI based on Figma
+- Responsive layout for mobile + desktop  
+
+### 📝 MCQ Test Page (`/mcq`)
+
+Fully functional exam engine:
+
+- Fetches all MCQs from API  
+- Supports questions with:
+  - Options
+  - Images
+  - Comprehension paragraphs
+- Timer countdown (auto-submit when time ends)
+- Mark for Review / Unmark
+- Navigation (Previous / Next)
+- Final question → "Submit" button
+- Right-side question sheet with color indicators:
+  - Answered
+  - Not Answered
+  - Marked For Review  
+
+### 📊 Results Page (`/result`)
+
+- Displays:
+  - Score
+  - Correct / Wrong / Not attended
+  - Total questions
+- UI matches Figma
+
+---
+
+## 🗂 Folder Structure
+src/
+├── app/
+│ ├── (auth)/
+│ │ ├── login/
+│ │ └── verify/
+│ │ └── create-profile/
+│ ├── (root)/
+│ │ ├── page.tsx → Home
+│ │ ├── mcq/page.tsx → Exam page
+│ │ └── result/page.tsx → Result page
+│ └── layout.tsx → Global layout
+│
+├── components/
+│ ├── Button.tsx
+│ ├── Navbar.tsx
+│ ├── Modal.tsx
+│ ├── SmallConfirmModal.tsx
+│ ├── Legends.tsx
+│ └── RequireAuth.tsx
+│
+├── lib/
+│ ├── axios.ts → Axios instance + interceptors
+│ ├── api.ts → API helper functions
+│ └── AuthContext.tsx → Auth provider + token handling
+├── context/
+│ └── AuthContext.tsx → Auth provider + token handling
+│   
+│
+└── public/
+├── frame.png
+├── india.png
+├── OBJECTS.png
+└── other assets...
+
+## Run development server
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Application will be available at:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+http://localhost:3000
