@@ -80,7 +80,6 @@ export default function ProfilePage() {
   login(data.access_token, data.refresh_token, data.user ?? null);
   router.push("/");
 } catch (err: any) {
-  console.error("createProfile error:", err);
   setError(err?.response?.data?.message || err?.message || "Submission failed");
 } finally {
   setLoading(false);

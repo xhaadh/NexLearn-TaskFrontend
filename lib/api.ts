@@ -3,7 +3,6 @@ import api from "./axios";
 export const sendOtp = (mobile: string) => {
   const fd = new FormData();
   fd.append("mobile", mobile);
-  console.log("Sending OTP to:", mobile);
   return api.post("/auth/send-otp", fd)
 };
 
@@ -46,7 +45,6 @@ export const listQuestions = () =>
       return res;
     })
     .catch((err) => {
-      console.error("[listQuestions] error:", err);
       throw err;
     });
 

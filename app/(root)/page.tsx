@@ -26,7 +26,6 @@ export default function Page() {
         if (payload?.questions_count) setQuestionsCount(Number(payload.questions_count));
         else if (Array.isArray(payload?.questions)) setQuestionsCount(payload.questions.length);
       } catch (err: any) {
-        console.error("Failed to load instructions:", err);
         setError("Failed to load instructions");
       } finally {
         if (mounted) setLoading(false);

@@ -58,7 +58,6 @@ export default function ExamPage() {
         qList.forEach((q) => (initialAnswers[q.question_id] = null));
         setAnswers(initialAnswers);
       } catch (err: any) {
-        console.error("Failed to load questions", err);
         setFetchError("Failed to load questions");
       } finally {
         if (mounted) setLoading(false);
@@ -137,7 +136,6 @@ export default function ExamPage() {
       }
       router.push("/result");
     } catch (err: any) {
-      console.error("Submit failed", err);
       alert(err?.response?.data?.message || err?.message || "Submit failed");
     } finally {
       setSubmitting(false);
