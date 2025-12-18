@@ -95,8 +95,7 @@ export default function ExamPage() {
 
       if (s <= 1) {
         clearInterval(t);
-        handleSubmitAnswers(true); // forced auto-submit
-        return 0;
+        handleSubmitAnswers(true);
       }
 
       return s - 1;
