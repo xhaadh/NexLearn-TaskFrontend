@@ -95,7 +95,7 @@ export default function ExamPage() {
 
       if (s <= 1) {
         clearInterval(t);
-        handleSubmitAnswers(true);
+        handleSubmitAnswers();
       }
 
       return s - 1;
