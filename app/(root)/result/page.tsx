@@ -19,6 +19,7 @@ export default function Page() {
   }, []);
 
   function handleDone() {
+    sessionStorage.removeItem("last_exam_result");
     router.push("/");
   }
 
